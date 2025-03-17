@@ -17,7 +17,9 @@ export const Card = ({id,name,phone,address,email}) => {
                     </div>
                     <div className="col-md-8">
                         <div className="card-body">
+                            <div className=""> 
                             <h5 className="card-title">{name}</h5>
+                            </div>
                             <p className="card-text">email: {email}</p>
                             <p className="card-text">address: {address}</p>
                             <p className="card-text">phone: {phone}</p>

@@ -8,7 +8,7 @@ import { Card } from "../component/card.jsx";
 
 export const Home = () => {
 	const { actions, store } = useContext(Context)
-	const [name,setName] = useState("")
+	const [name,setName] = useState("rafael")
 	useEffect(() => {
 		actions.getContact(name)
 
@@ -18,7 +18,7 @@ export const Home = () => {
 		<div className="text-center mt-5">
 			<h3>Busca o Crea agenda</h3>
 
-			<input onChange={(e)=>setName(e.target.value)}/>
+			<input value={name} onChange={(e)=>setName(e.target.value)}/>
 
 			<h3>Contactos</h3>
 			{ 
