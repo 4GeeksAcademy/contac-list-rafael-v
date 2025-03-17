@@ -7,9 +7,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			// Use getActions to call a function within a fuction
 			
-			getContact: async () => {
+			getContact: async (name) => {
 				try {
-				const response = await fetch ("https://playground.4geeks.com/contact/agendas/rafael")
+				const response = await fetch (`https://playground.4geeks.com/contact/agendas/${name}`)
 				console.log(response)
 				const data = await response.json()
 				console.log(data)
