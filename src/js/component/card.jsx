@@ -3,7 +3,7 @@ import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { Context } from "../store/appContext"
 
-export const Card = ({id,name,phone,address,email}) => {
+export const Card = ({id,name,phone,address,email,onDelete}) => {
     const { actions, store } = useContext(Context)
 
 
@@ -17,8 +17,12 @@ export const Card = ({id,name,phone,address,email}) => {
                     </div>
                     <div className="col-md-8">
                         <div className="card-body">
-                            <div className=""> 
+                            <div className="d-flex justify-content-between"> 
                             <h5 className="card-title">{name}</h5>
+                            <div>
+                                <button className="btn btn-outline-info mx-2"><i className="fa fa-pen"></i></button>
+                                <button className="btn btn-outline-danger" onClick={()=>onDelete()} data-bs-toggle="modal" data-bs-target="#exampleModal"><i className="fa fa-trash"></i></button>
+                            </div>
                             </div>
                             <p className="card-text">email: {email}</p>
                             <p className="card-text">address: {address}</p>

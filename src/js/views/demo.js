@@ -16,6 +16,7 @@ export const Demo = () => {
 	const agregar = async (e)=>{ 
 		e.preventDefault()
 		console.log (nombre,direccion,telefono,email)
+		//nombre,telefono,email,direccion
 		let resp = await actions.createContact(nombre,telefono,email,direccion)
 		if (resp){
 			navigate("/")
