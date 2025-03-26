@@ -80,7 +80,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error)
 				}
-			}
+			},
+
+			updateContact: async (nombre,telefono,email,direccion,id,slug) => {
+				try {
+					const response = await fetch(`https://playground.4geeks.com/contact/agendas/${slug}/contacts/${id}`, {
+						method: "PUT",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify({
+
+							"name": nombre,
+							"phone": telefono,
+							"email": email,
+							"address": direccion,
+						})
+					})
+					console.log (response)
+					if (response.status== 200){
+						getActions().getContact(slug)
+						return true
+					} else {
+						return false
+					}
+				} catch (error) {
+					console.log(error)
+				}
+			},
 		}
 	};
 };

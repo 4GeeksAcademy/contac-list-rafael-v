@@ -4,6 +4,7 @@ import "../../styles/home.css";
 import { Context } from "../store/appContext"
 import { Card } from "../component/card.jsx";
 import ModalDelete from "../component/modaldelete.jsx";
+import ModalEdit from "../component/modaledit.jsx";
 
 
 
@@ -14,6 +15,11 @@ export const Home = () => {
 		showModal: false,
 		id: undefined,
 		name: undefined
+	})
+	const [showModalEdit, setShowModalEdit] = useState({
+		showModal: false,
+		id: undefined,
+		contact: undefined
 	})
 	useEffect(() => {
 		actions.getContact(name)
@@ -40,6 +46,7 @@ export const Home = () => {
 							email={item.email}
 							id={item.id}
 							onDelete={() => setShowModalDelete({ showModal: true, id: item.id, name: item.name })}
+							onEdit={() => setShowModalEdit({ showModal: true, id: item.id, contact: item })}
 						/>
 					))
 				) : (
@@ -52,6 +59,13 @@ export const Home = () => {
 				id={showModalDelete.id}
 				name={showModalDelete.name}
 				onClose={() => setShowModalDelete({ showModal: false })}
+				slug={name}
+			/>
+			<ModalEdit
+				show={showModalEdit.showModal}
+				id={showModalEdit.id}
+				contact={showModalEdit.contact}
+				onClose={() => setShowModalEdit({ showModal: false })}
 				slug={name}
 			/>
 		</div>
